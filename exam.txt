@@ -1,0 +1,91 @@
+#include <iostream>
+using namespace std;
+
+class person
+{
+public:
+	char name[10];
+	int phone;
+};
+class worker : public person
+{
+public:
+	char namecp[10];
+	int sla;
+
+}; 
+class student :public person
+{
+public:
+	int kur;
+	char names[10];
+}; 
+class mirea :public student, public worker
+{
+public:
+	void in1(char name[10], int phone, char namecp[10], int sla)
+	{
+		cin.ignore();
+		cout << " Enter name" << endl;
+		cin.getline(name, 10);
+		cin.ignore();
+		cout << "Enter phone" << endl;
+		cin >> phone;
+		cout << "Enter name company" << endl;
+		cin >> namecp;
+		cout << "Enter salary" << endl;
+		cin >> sla;
+	}
+	void in2(char name[10], int phone, char names[10], int kur)
+	{
+		cin.ignore();
+		cout << " Enter name" << endl;
+		cin.getline(name, 10);
+		cin.ignore();
+		cout << "Enter phone" << endl;
+		cin >> phone;
+		cout << "Enter name company" << endl;
+		cin >> names;
+		cout << "Enter salary" << endl;
+		cin >> kur;
+	}
+}; 
+int main()
+{
+	mirea per[50];
+	int std = 0;
+	int wor = 0;
+	int chose = 0;
+	char name[10];
+	int phone = 0;
+	char namecp[10];
+	int sla = 0;
+	int kur = 0;
+	char names[10];
+	again:
+	cout << "You want to enter worker or student" << endl;
+	cout << "1.worker" << endl << "2.student" << endl << "3.number of worker and student" << endl;
+	cin >> chose;
+	if (chose == 1)
+	{
+		per[0].in1(name, phone, namecp, sla);
+		std++;
+		chose = 0;
+		goto again;
+	}
+	if (chose == 2)
+	{
+		per[0].in2(name, phone, names, kur);
+		wor++;
+		chose = 0;
+		goto again;
+	}
+	if (chose == 3)
+	{
+		cout << "number of student" << std << endl;
+		cout << "number of worker" << wor << endl;
+		chose = 0;
+
+	}
+	else goto again;
+}
